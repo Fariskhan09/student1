@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🤖 AI Study Assistant</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="logo">
+                <i class="fas fa-graduation-cap"></i>
+                <div class="logo-text">
+                    <h1>StudyBot AI</h1>
+                    <p class="tagline">Your Personal AI Study Assistant</p>
+                </div>
+            </div>
+            <div class="header-info">
+                <div class="status-badge" id="status-badge">
+                    <span class="status-dot"></span>
+                    <span id="status-text">Checking...</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Chat Container -->
+            <div class="chat-container">
+                <!-- Chat Header -->
+                <div class="chat-header">
+                    <div class="chat-title">
+                        <div class="avatar">
+                            <i class="fas fa-robot"></i>
+                        </div>
+                        <div>
+                            <h2>Study Assistant</h2>
+                            <p class="subtitle">Ask me anything about studying!</p>
+                        </div>
+                    </div>
+                    <button class="btn-clear" onclick="clearChat()">
+                        <i class="fas fa-trash-alt"></i> Clear Chat
+                    </button>
+                </div>
+
+                <!-- Chat Messages -->
+                <div class="chat-messages" id="chat-messages">
+                    <!-- Welcome Message -->
+                    <div class="message bot welcome">
+                        <div class="message-content">
+                            <div class="message-header">
+                                <span class="message-sender">StudyBot</span>
+                                <span class="ai-badge">AI</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quick Suggestions -->
+                <div class="suggestions-container">
+                    <h4><i class="fas fa-bolt"></i> Quick Questions:</h4>
+                    <div class="suggestions" id="suggestions">
+                        <!-- Suggestions will be loaded by JavaScript -->
+                    </div>
+                </div>
+
+                <!-- Input Area -->
+                <div class="input-container">
+                    <div class="input-wrapper">
+                        <input type="text" 
+                               id="user-input" 
+                               placeholder="Ask about math, science, programming, study tips... (Press Enter to send)"
+                               autocomplete="off"
+                               onkeypress="handleKeyPress(event)">
+                        <button class="btn-send" id="send-btn" onclick="sendMessage()">
+                            <i class="fas fa-paper-plane"></i> Send
+                        </button>
+                    </div>
+                    <div class="input-hint">
+                        <i class="fas fa-lightbulb"></i>
+                        <span>Tip: Be specific! Ask "Explain photosynthesis" or "How to solve quadratic equations?"</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sidebar -->
+            <div class="sidebar">
+                <div class="sidebar-section">
+                    <h3><i class="fas fa-brain"></i> AI Status</h3>
+                    <div class="ai-status-card">
+                        <div class="status-indicator">
+                            <div class="status-icon" id="status-icon">
+                                <i class="fas fa-check-circle"></i>
+                            </div>
+                            <div class="status-details">
+                                <h4>AI Assistant</h4>
+                                <p id="ai-mode">Checking...</p>
+                            </div>
+                        </div>
+                        <div class="status-stats">
+                            <div class="stat">
+                                <span class="stat-label">Memory</span>
+                                <span class="stat-value" id="memory-count">0</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-label">Responses</span>
+                                <span class="stat-value" id="response-count">0</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="sidebar-section">
+                    <h3><i class="fas fa-book-open"></i> Study Topics</h3>
+                    <div class="topics-list">
+                        <div class="topic" onclick="sendTopic('math')">
+                            <i class="fas fa-calculator"></i>
+                            <span>Mathematics</span>
+                        </div>
+                        <div class="topic" onclick="sendTopic('science')">
+                            <i class="fas fa-flask"></i>
+                            <span>Science</span>
+                        </div>
+                        <div class="topic" onclick="sendTopic('programming')">
+                            <i class="fas fa-code"></i>
+                            <span>Programming</span>
+                        </div>
+                        <div class="topic" onclick="sendTopic('history')">
+                            <i class="fas fa-landmark"></i>
+                            <span>History</span>
+                        </div>
+                        <div class="topic" onclick="sendTopic('writing')">
+                            <i class="fas fa-pen-fancy"></i>
+                            <span>Writing</span>
+                        </div>
+                        <div class="topic" onclick="sendTopic('study tips')">
+                            <i class="fas fa-graduation-cap"></i>
+                            <span>Study Tips</span>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="footer-content">
+                <div class="footer-left">
+                    <p><i class="fas fa-graduation-cap"></i> StudyBot AI v1.0 | Made with ❤️ for Students</p>
+                </div>
+                <div class="footer-right">
+                    <button class="btn-help" onclick="showHelp()">
+                        <i class="fas fa-question-circle"></i> Help
+                    </button>
+                    <button class="btn-status" onclick="checkStatus()">
+                        <i class="fas fa-wifi"></i> Status
+                    </button>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Notification Toast -->
+    <div id="toast" class="toast"></div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
