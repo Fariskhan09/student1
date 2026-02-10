@@ -1,0 +1,44 @@
+{
+  "intents": [
+    {
+      "tag": "greeting",
+      "patterns": ["Hi", "Hello", "Hey", "Good morning", "Good afternoon", "Good evening"],
+      "responses": ["Hello! How can I help you today?", "Hi there!", "Hey! What's up?", "Greetings! How can I assist you?"]
+    },
+    {
+      "tag": "courses",
+      "patterns": ["What courses are available?", "Show me courses", "list courses", "available subjects", "what do you study"],
+      "responses": ["We offer: Mathematics, Science, Computer Science, English, History", "Available courses: Math 101, Science 201, CS 301, English 102, History 101", "You can choose from STEM subjects, Humanities, and Social Sciences"]
+    },
+    {
+      "tag": "deadline",
+      "patterns": ["When is assignment due?", "What's the deadline?", "assignment submission date", "project deadline", "when to submit"],
+      "responses": ["Assignment deadline is December 15th", "Projects are due next Friday", "Submit your assignment by December 20th", "Check the course portal for exact deadlines"]
+    },
+    {
+      "tag": "library",
+      "patterns": ["library hours", "when is library open", "library timing", "study room hours", "library schedule"],
+      "responses": ["Library hours: 9:00 AM - 9:00 PM (Monday to Saturday)", "Library opens at 9 AM and closes at 9 PM", "Study rooms are available 24/7 for registered students"]
+    },
+    {
+      "tag": "exams",
+      "patterns": ["exam schedule", "when are exams", "final exam dates", "midterm schedule", "exam timetable"],
+      "responses": ["Final exams start on December 20th", "Midterm exams: November 15-20", "Check the exam schedule on the student portal", "Exam dates are posted on the notice board"]
+    },
+    {
+      "tag": "grades",
+      "patterns": ["how to check grades", "view my grades", "grade report", "marks", "results"],
+      "responses": ["Check grades on the student portal", "Grades are updated every Friday", "Contact your instructor for grade inquiries", "Grade reports are emailed at the end of each month"]
+    },
+    {
+      "tag": "goodbye",
+      "patterns": ["Bye", "Goodbye", "See you later", "I'm done", "Exit", "Bye bye"],
+      "responses": ["Goodbye! Have a great day!", "See you later!", "Take care!", "Goodbye! Come back if you have more questions!"]
+    },
+    {
+      "tag": "thanks",
+      "patterns": ["Thank you", "Thanks", "Appreciate it", "You're helpful", "Thank you so much"],
+      "responses": ["You're welcome!", "Happy to help!", "Anytime!", "Glad I could assist you!"]
+    }
+  ]
+}
